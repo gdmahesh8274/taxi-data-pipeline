@@ -16,3 +16,19 @@ Python, PyArrow, DuckDB, SQL, and Git.
 Flag trips with zero distance or distance above 100 miles.
 These are review flags, not confirmed errors.
 Original data is preserved.
+
+## Run locally
+
+Install dependencies:
+```powershell
+python -m pip install -r requirements.txt
+```
+
+Run these scripts in order:
+```powershell
+python main.py
+python inspect_data.py
+python query_data.py
+```
+
+Output: `data/top_pickup_zones.csv`
