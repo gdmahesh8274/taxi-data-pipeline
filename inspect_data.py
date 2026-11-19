@@ -8,6 +8,19 @@ file_path = (
 )
 
 table = pq.read_table(file_path)
+if table.num_rows == 0:
+    raise ValueError("Data quality check failed: trip file is empty")
+
+print("Data quality check passed: trip file contains rows")
+required_columns = {"trip_distance", "fare_amount", "total_amount",}  
+
+missing_columns = required_columns - set(table.column_names)
+
+if missing_columns:
+    raise ValueError(f"Missing required columns: {missing_columns}")
+
+print("Data quality check passed: required columns exist")
+
 
 print("Rows:", table.num_rows)
 print("Columns:", table.num_columns)
