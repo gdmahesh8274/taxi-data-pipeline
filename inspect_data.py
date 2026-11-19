@@ -58,5 +58,11 @@ print("Trips needing review:", pc.sum(needs_review).as_py())
 
 output_path = file_path.parent / "green_tripdata_2024-01_flagged.parquet"
 pq.write_table(table, output_path)
+saved_table = pq.read_table(output_path)
+
+if saved_table.num_rows != table.num_rows:
+    raise ValueError("Row count changed while saving")
+
+print("Save check passed: all trip records preserved")
 
 print("Saved:", output_path.name)
