@@ -26,9 +26,10 @@ python -m pip install -r requirements.txt
 
 Run these scripts in order:
 ```powershell
-python main.py
-python inspect_data.py
-python query_data.py
+python run_pipeline.py 
 ```
+The runner downloads data, validates it, and creates the report.
+Progress and failures are recorded in pipeline.log.
+The pipeline stops if a script fails.
 
 Output: `data/top_pickup_zones.csv`
