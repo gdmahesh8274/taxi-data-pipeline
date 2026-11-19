@@ -1,0 +1,19 @@
+name: Check Python code
+
+on: [push, pull_request]
+
+jobs:
+  syntax-check:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Download repository code
+        uses: actions/checkout@v4 
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.14"
+
+      - name: Check Python syntax
+        run: python -m compileall -q main.py inspect_data.py query_data.py run_pipeline.py
