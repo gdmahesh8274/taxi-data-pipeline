@@ -23,3 +23,12 @@ jobs:
 
       - name: Run the pipeline 
         run: python run_pipeline.py
+
+      - name: Save pickup report 
+        uses: actions/upload-artifact@v7
+        with:
+           name: pickup-report
+           path: data/top_pickup_zones.csv
+           retention-days: 7
+           if-no-files-found: error
+             
