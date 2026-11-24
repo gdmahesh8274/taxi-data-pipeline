@@ -31,4 +31,6 @@ jobs:
            path: data/top_pickup_zones.csv
            retention-days: 7
            if-no-files-found: error
+      - name: Build pipeline image
+      run: docker build -t taxi-data-pipeline
              
