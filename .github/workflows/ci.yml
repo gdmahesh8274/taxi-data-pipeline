@@ -34,5 +34,8 @@ jobs:
 
 
       - name: Build pipeline image
-        run: docker build -t taxi-data-pipeline .          
+        run: docker build -t taxi-data-pipeline .
+
+      - name: Test pipeline in container
+        run: docker run --rm taxi-data-pipeline            
 
