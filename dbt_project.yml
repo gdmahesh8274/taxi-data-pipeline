@@ -1,0 +1,5 @@
+name: taxi_dbt
+version: "1.0.0"
+config-version: 2
+profile: taxi_dbt
+model-paths: ["models"]
