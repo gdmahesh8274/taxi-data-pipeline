@@ -1,6 +1,7 @@
 from pathlib import Path
 import duckdb
 
+
 file_path = (
     Path(__file__).resolve().parent
     / "data"
@@ -52,3 +53,16 @@ report_path = file_path.parent / "top_pickup_zones.csv"
 report.write_csv(str(report_path), header=True)
 
 print("Report saved:", report_path.name)
+
+import os
+from uuid import uuid4
+
+reports_bucket = os.getenv("REPORTS_BUCKET")
+
+if reports_bucket:
+    from google.cloud import storage
+
+    object_name = f"top_pickup_zones_{uuid4().hex}.csv"
+    blob = storage.Client().bucket(reports_bucket).blob(object_name)
+    blob.upload_from_filename(str(report_path), content_type="text/csv")
+    print(f"Report uploaded: gs://{reports_bucket}/{object_name}") 
