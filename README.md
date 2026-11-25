@@ -33,3 +33,12 @@ Progress and failures are recorded in pipeline.log.
 The pipeline stops if a script fails.
 
 Output: `data/top_pickup_zones.csv`
+
+## Google Cloud setup
+
+- Cloud Storage holds the original trip and zone files.
+- We manually loaded those files into BigQuery. The `top_pickup_zones` view ranks the five busiest pickup zones.
+- Cloud Build packages the Python pipeline and publishes the image to Artifact Registry.
+- When started manually, the Cloud Run job runs the Python pipeline and uploads its CSV to the reports bucket.
+
+The Cloud Run CSV and BigQuery view both ranked East Harlem North first, with 12,141 trips.
