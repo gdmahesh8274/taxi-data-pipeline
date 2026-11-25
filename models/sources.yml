@@ -1,0 +1,9 @@
+version: 2
+
+sources:
+  - name: taxi_raw
+    database: project-72171eeb-108d-4e3b-a4d
+    schema: taxi_raw
+    tables:
+      - name: green_trips_2024_01
+      - name: taxi_zones
